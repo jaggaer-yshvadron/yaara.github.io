@@ -1430,7 +1430,7 @@
       });
     });
 
-    const pageButtons = Array.from(document.querySelectorAll(".page-btn"));
+    const pageButtons = Array.from(document.querySelectorAll(".page-btn[data-page]"));
     const pagePanels = Array.from(document.querySelectorAll(".page-panel"));
 
     pageButtons.forEach(button => {
@@ -1438,7 +1438,10 @@
         pageButtons.forEach(btn => btn.classList.remove("active"));
         pagePanels.forEach(panel => panel.classList.remove("active"));
         button.classList.add("active");
-        document.getElementById(`page-${button.dataset.page}`).classList.add("active");
+        const targetPanel = document.getElementById(`page-${button.dataset.page}`);
+        if (targetPanel) {
+          targetPanel.classList.add("active");
+        }
       });
     });
 
