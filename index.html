@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hi Jon!</title>
+  <style>
+    :root {
+      --bg: #fff6dc;
+      --ink: #1f2340;
+      --card: rgba(255, 255, 255, 0.78);
+      --hot: #ff5d73;
+      --gold: #ffb703;
+      --mint: #9be7c4;
+      --sky: #84d8ff;
+      --shadow: 0 20px 45px rgba(31, 35, 64, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Comic Sans MS", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255, 183, 3, 0.45), transparent 30%),
+        radial-gradient(circle at top right, rgba(132, 216, 255, 0.5), transparent 24%),
+        linear-gradient(180deg, #fffdf4 0%, var(--bg) 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .confetti,
+    .confetti::before,
+    .confetti::after {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      content: "";
+      background-image:
+        radial-gradient(circle, rgba(255, 93, 115, 0.9) 0 0.35rem, transparent 0.36rem),
+        radial-gradient(circle, rgba(255, 183, 3, 0.85) 0 0.25rem, transparent 0.26rem),
+        radial-gradient(circle, rgba(132, 216, 255, 0.9) 0 0.28rem, transparent 0.29rem),
+        radial-gradient(circle, rgba(155, 231, 196, 0.95) 0 0.3rem, transparent 0.31rem);
+      background-size: 15rem 15rem, 17rem 17rem, 19rem 19rem, 21rem 21rem;
+      animation: drift 18s linear infinite;
+      opacity: 0.45;
+    }
+
+    .confetti::before {
+      animation-duration: 24s;
+      transform: rotate(12deg);
+    }
+
+    .confetti::after {
+      animation-duration: 30s;
+      transform: rotate(-14deg);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .prompt {
+      background: rgba(31, 35, 64, 0.92);
+      color: #fff7de;
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .panel {
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      border-radius: 28px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+      margin: 1rem 0;
+    }
+
+    .highlight {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--gold), #ffd96a);
+      border-radius: 999px;
+      padding: 0.25rem 0.8rem;
+      font-weight: 700;
+      transform: rotate(-2deg);
+    }
+
+    .big-yay {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      margin: 1.2rem 0 0;
+      animation: bounce 1.4s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .stickers {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .sticker {
+      border-radius: 24px;
+      padding: 1rem;
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sticker h2 {
+      margin: 0 0 0.6rem;
+      font-size: 1.3rem;
+    }
+
+    .sticker p {
+      margin: 0;
+      max-width: 22ch;
+      font-size: 1rem;
+    }
+
+    .rocket {
+      background: linear-gradient(140deg, #1f2340 0%, #2f4d89 45%, #84d8ff 100%);
+      color: white;
+    }
+
+    .rocket::after {
+      content: "🚀";
+      position: absolute;
+      right: 1rem;
+      bottom: 0.2rem;
+      font-size: 5.6rem;
+      transform: rotate(12deg);
+      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
+    }
+
+    .party {
+      background: linear-gradient(135deg, #ff8fab 0%, #ffc6ff 40%, #fdffb6 100%);
+    }
+
+    .party::after {
+      content: "🥳🎉😂";
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      font-size: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .mini-card {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 22px;
+      padding: 1.1rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .image-card {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px;
+      background: #ffe8a3;
+    }
+
+    .image-card p {
+      margin: 0.8rem 0 0;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .mini-card .emoji {
+      display: block;
+      font-size: 2.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .marquee {
+      margin-top: 1.5rem;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #1f2340;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .marquee span {
+      display: inline-block;
+      white-space: nowrap;
+      padding: 0.9rem 0;
+      font-weight: 700;
+      animation: slide 18s linear infinite;
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes drift {
+      from { transform: translateY(-3%) rotate(0deg); }
+      to { transform: translateY(3%) rotate(360deg); }
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .grid,
+      .image-row {
+        grid-template-columns: 1fr;
+      }
+
+      .sticker p {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti" aria-hidden="true"></div>
+  <main>
+    <section class="prompt">
+      Create a fun page that says Hi Jon! I created a public HTML, it can also be private, but only to those who have GitHub, this is huge progress for me. YAYYYY
+      Make it funny with images and emojis and such, and add this prompt at the top
+      Then push this to main of https://github.com/jaggaer-yshvadron/yaara.github.io
+    </section>
+
+    <section class="hero">
+      <div class="panel">
+        <h1>Hi Jon!<br />I did a huge thing. 🎉</h1>
+        <p class="subtitle">
+          I created a <span class="highlight">public HTML</span> and it can also be private...
+          but only to people with GitHub. That means I am basically one dramatic deploy away from world domination. 😎
+        </p>
+        <p class="subtitle">
+          This is massive progress for me, and yes, I will be celebrating like I personally invented the internet.
+        </p>
+        <div class="big-yay">YAYYYY!!! 🥳💻✨</div>
+      </div>
+
+      <div class="stickers">
+        <article class="sticker rocket">
+          <h2>Launch Status</h2>
+          <p>Confidence level: somewhere between "I got this" and "please clap for my HTML."</p>
+        </article>
+        <article class="sticker party">
+          <h2>Official Mood</h2>
+          <p>One tiny page for GitHub Pages, one giant yeehaw for personal progress.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Celebration cards">
+      <article class="mini-card">
+        <span class="emoji">🌍</span>
+        Public on the internet. Casual. No big deal. Totally not iconic.
+      </article>
+      <article class="mini-card">
+        <span class="emoji">🔐</span>
+        Also technically private-ish if the audience is "people who have GitHub."
+      </article>
+      <article class="mini-card">
+        <span class="emoji">😂</span>
+        If this page had a soundtrack, it would be happy keyboard smashing.
+      </article>
+    </section>
+
+    <section class="image-row" aria-label="Funny celebration images">
+      <article class="image-card">
+        <img
+          alt="A goofy smiling computer cheering for the HTML page"
+          src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 420'><rect width='600' height='420' rx='40' fill='%23fff0a8'/><circle cx='120' cy='92' r='34' fill='%23ffb703'/><circle cx='502' cy='84' r='28' fill='%2384d8ff'/><rect x='110' y='85' width='380' height='210' rx='28' fill='%231f2340'/><rect x='135' y='110' width='330' height='160' rx='18' fill='%2384d8ff'/><circle cx='240' cy='178' r='20' fill='%231f2340'/><circle cx='360' cy='178' r='20' fill='%231f2340'/><path d='M228 225 Q300 280 372 225' stroke='%231f2340' stroke-width='10' fill='none' stroke-linecap='round'/><rect x='230' y='305' width='140' height='18' rx='9' fill='%231f2340'/><rect x='192' y='325' width='216' height='18' rx='9' fill='%23ff5d73'/><text x='300' y='150' text-anchor='middle' font-size='28' font-family='Verdana' fill='%231f2340'>HTML PARTY</text></svg>"
+        />
+        <p>My laptop after successfully existing on the internet for five minutes. 💅</p>
+      </article>
+      <article class="image-card">
+        <img
+          alt="A party blob character celebrating progress"
+          src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 420'><rect width='600' height='420' rx='40' fill='%23ffd6e0'/><path d='M170 267 C170 170 235 118 304 118 C390 118 438 187 438 264 C438 334 388 372 303 372 C223 372 170 328 170 267 Z' fill='%239be7c4'/><circle cx='262' cy='235' r='17' fill='%231f2340'/><circle cx='347' cy='235' r='17' fill='%231f2340'/><path d='M245 287 Q300 325 355 287' stroke='%231f2340' stroke-width='12' fill='none' stroke-linecap='round'/><path d='M255 124 L330 56 L366 138 Z' fill='%23ff5d73'/><circle cx='366' cy='138' r='16' fill='%23ffb703'/><circle cx='130' cy='95' r='14' fill='%23ffb703'/><circle cx='467' cy='94' r='14' fill='%23ffb703'/><circle cx='490' cy='145' r='10' fill='%23ff5d73'/><circle cx='110' cy='155' r='10' fill='%2384d8ff'/><text x='300' y='88' text-anchor='middle' font-size='30' font-family='Verdana' fill='%231f2340'>YAYYYY</text></svg>"
+        />
+        <p>This is the exact face of “I made progress and now everyone must know.” 😂</p>
+      </article>
+    </section>
+
+    <section class="marquee" aria-label="Scrolling celebration message">
+      <span>
+        HI JON! HUGE PROGRESS ALERT! HTML HAS BEEN DEPLOYED! YAYYYY! HI JON! HUGE PROGRESS ALERT! HTML HAS BEEN DEPLOYED! YAYYYY!
+      </span>
+    </section>
+
+    <p class="footer-note">
+      Certified fresh progress report, delivered with extra confetti and absolutely zero chill. 🎊
+    </p>
+  </main>
+</body>
+</html>
