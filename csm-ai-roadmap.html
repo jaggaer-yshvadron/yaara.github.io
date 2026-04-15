@@ -358,6 +358,17 @@
       transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
     }
 
+    .tab-btn::after {
+      content: "Click";
+      margin-left: 8px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      opacity: 0.85;
+    }
+
     .tab-btn:hover,
     .tab-btn:focus-visible {
       transform: translateY(-2px);
@@ -372,6 +383,11 @@
       color: #fff;
       border-color: transparent;
       transform: translateY(-1px);
+    }
+
+    .tab-btn.active::after {
+      content: "Open";
+      color: rgba(255, 255, 255, 0.92);
     }
 
     .tab-panel {
