@@ -94,11 +94,34 @@
       transition: 160ms ease;
     }
 
+    .page-btn-attention {
+      animation: roadmap-bounce 1.2s ease 0.35s 3;
+      transform-origin: center;
+    }
+
     .page-btn.active {
       background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
       color: #fff;
       border-color: transparent;
       transform: translateY(-1px);
+    }
+
+    @keyframes roadmap-bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      20% {
+        transform: translateY(-8px);
+      }
+      35% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+      65% {
+        transform: translateY(0);
+      }
     }
 
     .page-panel {
@@ -656,11 +679,11 @@
   </style>
 </head>
 <body>
-  <a class="back-home" href="./index.html" aria-label="Back to home" title="Back to home">⭐</a>
+  <a class="back-home" href="./index.html" aria-label="Back to home" title="Back to home">🤓</a>
   <div class="shell">
     <div class="main-switch">
       <button class="page-btn active" data-page="brainstorm">Brainstorm</button>
-      <a class="page-btn" href="./csm-agent-roadmap.html">AI Roadmap 2026</a>
+      <a class="page-btn page-btn-attention" href="./csm-agent-roadmap.html">CSM AI Roadmap 2026</a>
     </div>
 
     <section class="page-panel active" id="page-brainstorm">
