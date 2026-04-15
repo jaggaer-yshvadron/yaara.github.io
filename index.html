@@ -59,6 +59,26 @@
       transform: rotate(-14deg);
     }
 
+    .secret-launch {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 28px;
+      height: 28px;
+      z-index: 20;
+      border-radius: 999px;
+      opacity: 0.015;
+      background: #1f2340;
+      text-decoration: none;
+    }
+
+    .secret-launch:focus-visible,
+    .secret-launch:hover {
+      opacity: 0.12;
+      outline: 2px solid rgba(31, 35, 64, 0.35);
+      outline-offset: 4px;
+    }
+
     main {
       position: relative;
       z-index: 1;
@@ -277,6 +297,7 @@
 </head>
 <body>
   <div class="confetti" aria-hidden="true"></div>
+  <a class="secret-launch" href="./csm-ai-roadmap.html" aria-label="Open CSM AI Roadmap" title=""></a>
   <main>
     <section class="prompt">
       Create a fun page that says Hi Jon! I created a public HTML, it can also be private, but only to those who have GitHub, this is huge progress for me. YAYYYY
