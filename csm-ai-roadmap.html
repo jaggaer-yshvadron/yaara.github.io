@@ -95,8 +95,31 @@
     }
 
     .page-btn-attention {
-      animation: roadmap-bounce 1.2s ease 0.35s 3;
+      position: relative;
+      overflow: hidden;
+      animation: roadmap-bounce 1.2s ease 0.35s 3, roadmap-glow 5.2s ease-in-out infinite 1.2s;
       transform-origin: center;
+    }
+
+    .page-btn-attention::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 0.12rem, transparent 0.14rem),
+        radial-gradient(circle, rgba(255, 183, 3, 0.95) 0 0.14rem, transparent 0.16rem),
+        radial-gradient(circle, rgba(111, 70, 217, 0.9) 0 0.13rem, transparent 0.15rem),
+        radial-gradient(circle, rgba(29, 141, 99, 0.9) 0 0.12rem, transparent 0.14rem);
+      background-size: 2.8rem 2.8rem, 3.4rem 3.4rem, 3rem 3rem, 3.6rem 3.6rem;
+      background-position: 0 0, 1rem 0.4rem, 1.7rem 1.2rem, 0.4rem 1.5rem;
+      opacity: 0.3;
+      pointer-events: none;
+      animation: roadmap-confetti 6s linear infinite;
+    }
+
+    .page-btn-attention span {
+      position: relative;
+      z-index: 1;
     }
 
     .page-btn.active {
@@ -136,6 +159,42 @@
         background: rgba(255, 255, 255, 0.9);
         color: var(--ink);
         border-color: var(--line);
+      }
+    }
+
+    @keyframes roadmap-glow {
+      0%, 100% {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 249, 255, 0.95) 100%);
+        color: var(--ink);
+        border-color: var(--line);
+        box-shadow: 0 10px 22px rgba(16, 42, 86, 0.08);
+      }
+      25% {
+        background: linear-gradient(90deg, #2474e0 0%, #6f46d9 100%);
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 14px 26px rgba(36, 116, 224, 0.28);
+      }
+      50% {
+        background: linear-gradient(90deg, #1d8d63 0%, #2474e0 100%);
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 14px 26px rgba(29, 141, 99, 0.28);
+      }
+      75% {
+        background: linear-gradient(90deg, #ea8418 0%, #ffb703 100%);
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 14px 26px rgba(234, 132, 24, 0.26);
+      }
+    }
+
+    @keyframes roadmap-confetti {
+      from {
+        transform: translateX(-8%) rotate(0deg);
+      }
+      to {
+        transform: translateX(8%) rotate(360deg);
       }
     }
 
@@ -730,7 +789,7 @@
   <div class="shell">
     <div class="main-switch">
       <button class="page-btn active" data-page="brainstorm">Brainstorm</button>
-      <a class="page-btn page-btn-attention" href="./csm-agent-roadmap.html">CSM AI Roadmap 2026</a>
+      <a class="page-btn page-btn-attention" href="./csm-agent-roadmap.html"><span>CSM AI Roadmap 2026</span></a>
     </div>
 
     <section class="page-panel active" id="page-brainstorm">
