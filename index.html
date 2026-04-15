@@ -59,26 +59,6 @@
       transform: rotate(-14deg);
     }
 
-    .secret-launch {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      width: 28px;
-      height: 28px;
-      z-index: 20;
-      border-radius: 999px;
-      opacity: 0.015;
-      background: #1f2340;
-      text-decoration: none;
-    }
-
-    .secret-launch:focus-visible,
-    .secret-launch:hover {
-      opacity: 0.12;
-      outline: 2px solid rgba(31, 35, 64, 0.35);
-      outline-offset: 4px;
-    }
-
     main {
       position: relative;
       z-index: 1;
@@ -260,6 +240,32 @@
       animation: slide 18s linear infinite;
     }
 
+    .secret-smile {
+      position: fixed;
+      top: 0.8rem;
+      right: 0.9rem;
+      z-index: 20;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: rgba(31, 35, 64, 0.72);
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(31, 35, 64, 0.08);
+      border-radius: 999px;
+      padding: 0.22rem 0.38rem;
+      opacity: 0.9;
+      box-shadow: 0 8px 18px rgba(31, 35, 64, 0.1);
+      transition: transform 160ms ease, color 160ms ease, opacity 160ms ease, background 160ms ease;
+    }
+
+    .secret-smile:hover,
+    .secret-smile:focus-visible {
+      color: var(--hot);
+      background: rgba(255, 255, 255, 0.92);
+      opacity: 1;
+      transform: scale(1.08);
+      outline: none;
+    }
+
     .footer-note {
       margin-top: 1.5rem;
       text-align: center;
@@ -297,7 +303,7 @@
 </head>
 <body>
   <div class="confetti" aria-hidden="true"></div>
-  <a class="secret-launch" href="./csm-ai-roadmap.html" aria-label="Open CSM AI Roadmap" title=""></a>
+  <a class="secret-smile" href="csm-ai-roadmap.html" aria-label="Open CSM AI Roadmap">🙂</a>
   <main>
     <section class="prompt">
       Create a fun page that says Hi! I created a public HTML, this is huge progress for me. Make it funny with images and emojis and such, and add this prompt at the top. Then push this to main of https://github.com/jaggaer-yshvadron/yaara.github.io
