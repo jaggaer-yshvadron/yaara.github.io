@@ -46,6 +46,35 @@
       padding: 28px 22px 40px;
     }
 
+    .top-nav {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+
+    .back-brainstorm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--navy);
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .back-brainstorm:hover,
+    .back-brainstorm:focus-visible {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 22px 40px rgba(16, 42, 86, 0.18);
+      outline: none;
+    }
+
     .hero h1 {
       margin: 0;
       font-size: clamp(2.3rem, 5vw, 4rem);
@@ -530,6 +559,9 @@
 </head>
 <body>
   <div class="page">
+    <div class="top-nav">
+      <a class="back-brainstorm" href="./csm-ai-roadmap.html">← Back to Brainstorm</a>
+    </div>
     <section class="hero">
       <h1>AI-Powered CSM Agent Lifecycle</h1>
       <p>Multiple AI agents working together to streamline onboarding, strengthen adoption, support ongoing customer meetings, surface risk early, and improve renewal readiness in JAGGAER.</p>
